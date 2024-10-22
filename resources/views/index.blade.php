@@ -62,7 +62,7 @@
         </div>
     </nav>
 
-    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+    <div class="">
         
         @yield("content")
     </div>        
@@ -81,35 +81,38 @@
                 </div>
                 <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                        <h2 class="mb-3 text-sm font-semibold text-gray-900 uppercase dark:text-white">Notre entreprise</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="" class="hover:underline">Flowbite</a>
+                            <li class="">
+                                <a href="" class="hover:underline">A propos de nous</a>
+                            </li>
+                            {{-- <li>
+                                <a href="https://tailwindcss.com/" class="hover:underline">Contacter nous par mail</a>
+                            </li> --}}
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-3 text-sm font-semibold text-gray-900 uppercase dark:text-white">Contact</h2>
+                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                            <li class="">
+                                <p class="hover:underline ">77 345 87 66</p>
                             </li>
                             <li>
-                                <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                                <p class="hover:underline">kouq@gmail.com</p>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+                        <h2 class="mb-3 text-sm font-semibold text-gray-900 uppercase dark:text-white">Aide</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
+                            <li class="">
+                                <a href="#" class="hover:underline">Contacter l'organisateur</a>
                             </li>
                             <li>
-                                <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="#" class="hover:underline">Privacy Policy</a>
+                                <a href="#" class="hover:underline">Demander un remboursement</a>
                             </li>
                             <li>
-                                <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                                <a href="#" class="hover:underline">Creer un évenement</a>
                             </li>
                         </ul>
                     </div>
@@ -255,6 +258,21 @@
         font-size: 11px;
       }
     }
+
+    @keyframes backgroundChange {
+  0% { background-image: url('https://i0.wp.com/africtelegraph.com/wp-content/uploads/2017/07/Youssou-Ndour-un-artiste-s%C3%A9n%C3%A9galais.jpg?fit=1000%2C665&ssl=1'); }
+  25% { background-image: url('https://www.musicinafrica.net/sites/default/files/images/user/201901/23004799101547837151010972046241808707243199o.jpg'); }
+  50% { background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/210622101406-02-sadio-mane-file-0516.jpg?q=w_3000,h_2054,x_0,y_0,c_fill'); }
+  75% { background-image: url('https://www.luttetv.com/wp-content/uploads/2024/01/maxresdefault-2023-12-27T034409.320.jpg'); }
+  100% { background-image: url('https://www.basket221.com/wp-content/uploads/2021/09/image-2021-09-24T194819.513.jpg'); }
+}
+
+.animated-bg {
+  animation: backgroundChange 40s infinite ease-in-out;
+  background-size: contain;
+  background-position: center;
+}
+
     </style>
     
 </html>
