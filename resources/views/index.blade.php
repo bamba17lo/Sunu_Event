@@ -5,21 +5,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Xewmi</title>
+    <title>SunuEvent</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
 </head>
 
 <body class="antialiased">
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="{{url('/')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
                 {{-- <img src="docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> --}}
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SunuEvent</span>
             </a>
@@ -34,31 +36,56 @@
                 </svg>
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul
-                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                            aria-current="page">Evénements</a>
+                        <a href="#" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Evénements</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Mes billets</a>
+                        <a href="#" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Mes billets</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Créer un évenement</a>
+                        <a href="{{url('creer-evenement')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Créer un événement</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Connexion</a>
+                        <a href="{{url('connecter')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Connexion</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Créer un compte</a>
+                        <a href="{{url('creer-un-compte')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Créer un compte</a>
                     </li>
                 </ul>
             </div>
+            
+            <script>
+                // Get all the nav links
+                const navLinks = document.querySelectorAll('.nav-link');
+            
+                // Function to activate the correct link on page load
+                function setActiveLink() {
+                    const activeLinkIndex = localStorage.getItem('activeLink');
+                    if (activeLinkIndex !== null) {
+                        navLinks[activeLinkIndex].classList.add('active-link');
+                    }
+                }
+            
+                // Call the function on page load
+                setActiveLink();
+            
+                // Add click event listener to each link
+                navLinks.forEach((link, index) => {
+                    link.addEventListener('click', function () {
+                        // Remove 'active-link' from all links
+                        navLinks.forEach(link => link.classList.remove('active-link'));
+            
+                        // Add 'active-link' to the clicked link
+                        this.classList.add('active-link');
+            
+                        // Save the clicked link's index to localStorage
+                        localStorage.setItem('activeLink', index);
+                    });
+                });
+            </script>
+            
+            
         </div>
     </nav>
 
@@ -188,7 +215,10 @@
     img {
       vertical-align: middle;
     }
-    
+    .active-link {
+    color: blue;
+    font-weight: bold;
+}
     /* Slideshow container */
     .slideshow-container {
       width: 100%; /* Adapter à la largeur du carousel parent */

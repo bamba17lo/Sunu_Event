@@ -1,6 +1,18 @@
 @extends('index')
 
 @section('content')
+@if(session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Succès',
+                text: '{{ session('success') }}',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+@endif
     {{-- Carousel --}}
     <div class="relative w-full h-screen max-w-5xl mx-auto bg-cover bg-center animated-bg">
     
