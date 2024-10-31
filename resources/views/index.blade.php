@@ -37,6 +37,11 @@
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    @if (Auth::check() && (Auth::user()->role_id == 1 || Auth::user()->role_id == 3))
+                    <li>
+                        <a target="blank" href="{{url('dashboard')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Tableau de bord</a>
+                    </li>
+                    @endif
                     <li>
                         <a href="#" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Evénements</a>
                     </li>
@@ -47,11 +52,19 @@
                         <a href="{{url('creer-evenement')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Créer un événement</a>
                     </li>
                     <li>
-                        <a href="{{url('connecter')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Connexion</a>
-                    </li>
-                    <li>
                         <a href="{{url('creer-un-compte')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Créer un compte</a>
                     </li>
+                    @if (Auth::guest())
+                    <li>
+                        <a href="{{url('connecter')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Connexion</a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{url('deconnecter')}}" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Déconnexion</a>
+                    </li>
+                    @endif
+                    
+                    
                 </ul>
             </div>
             

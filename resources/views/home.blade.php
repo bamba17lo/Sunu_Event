@@ -13,6 +13,18 @@
         });
     </script>
 @endif
+
+@if(session('successLogin'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Succès',
+                text: '{{ session('successLogin') }}',
+            });
+        });
+    </script>
+@endif
     {{-- Carousel --}}
     <div class="relative w-full h-screen max-w-5xl mx-auto bg-cover bg-center animated-bg">
     
