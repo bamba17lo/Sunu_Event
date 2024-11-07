@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryEvent;
+use App\Models\Region;
 use Illuminate\Http\Request;
 
 class CategoryEventController extends Controller
@@ -27,7 +28,10 @@ class CategoryEventController extends Controller
     }
 
     public function categoryDashboard(){
-        return view('Dashboard.category');
+        $category = CategoryEvent::all();
+        $nbrCategory = CategoryEvent::withCount('events')->get();
+        
+        return view('Dashboard.category')->with(['category'=>$nbrCategory]);
     }
 
     public function storeCategory(Request $request){
@@ -40,4 +44,25 @@ class CategoryEventController extends Controller
 
         return redirect('categories');
     }
+
+
+
+    // ---------------------
+    public function regionDashboard(){
+        $nbrRegion = Region::withCount('events')->get();
+        
+        return view('Dashboard.region')->with(['category'=>$nbrRegion]);
+    }
+
+    public function storeRegion(Request $request){
+        $data =  $request->validate([
+             'libelle'=> 'required'
+         ]);
+         $region = new Region();
+         $region->libelle = $data['libelle'];
+         $region->save();
+ 
+         return redirect('region');
+     }
+    
 }

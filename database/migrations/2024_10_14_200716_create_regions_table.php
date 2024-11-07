@@ -27,7 +27,7 @@ return new class extends Migration
                 'Tambacounda',
                 'Sedhiou',
                 'Ziguinchor',
-                'Podor'
+                'Louga'
             ]);
             $table->timestamps();
         });

@@ -5,6 +5,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Models\CategoryEvent;
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',[EventController::class,'indexOffice']);
 
 Route::get('musique&culture',[CategoryEventController::class,'categoryMusic']);
 Route::get('sport',[CategoryEventController::class,'categorySport']);
@@ -29,8 +28,12 @@ Route::get('education&formation',[CategoryEventController::class,'categoryEducat
 Route::get('seminaire&conference',[CategoryEventController::class,'categoryConference']);
 
 Route::get('creer-evenement',[EventController::class,'index'])->middleware('auth');
+Route::post('evenement',[EventController::class,'storeEvent'])->middleware('auth');
+Route::get('event/{event}',[EventController::class,'showEvent'])->name('event')->middleware('auth');
+
 
 Route::get('billets',[TicketController::class,'index'])->middleware('auth');
+Route::post('ticket',[TicketController::class,'storeTicket'])->middleware('auth');
 
 Route::get('connecter',[UserController::class,'login'])->name('login');
 Route::get('deconnecter',[UserController::class,'logout'])->name('logout');
@@ -39,5 +42,7 @@ Route::post('create-account',[UserController::class,'createAccount'])->name('cre
 Route::post('login',[UserController::class,'loginForm']);
 Route::get('dashboard',[UserController::class,'indexDashboard'])->middleware('auth');
 
-Route::get('categories',[CategoryEventController::class,'categoryDashboard']);
-Route::post('categorie',[CategoryEventController::class,'storeCategory']);
+Route::get('categories',[CategoryEventController::class,'categoryDashboard'])->middleware('auth');
+Route::post('categorie',[CategoryEventController::class,'storeCategory'])->middleware('auth');
+Route::get('region',[CategoryEventController::class,'regionDashboard'])->middleware('auth');
+Route::post('region',[CategoryEventController::class,'storeRegion'])->middleware('auth');

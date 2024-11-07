@@ -45,6 +45,7 @@
                     <li>
                         <a href="#" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Evénements</a>
                     </li>
+                    
                     <li>
                         <a href="#" class="nav-link block py-2 px-3 text-gray-900 rounded md:bg-transparent md:p-0 dark:text-white">Mes billets</a>
                     </li>
